@@ -1,8 +1,13 @@
-/* EmailApp */
 
+/* cmps */
+/* Header */
+@import './AppHeader.css';
+
+/* EmailApp */
 @import '../../apps/Email/assets/css/email-main.css';
 
 /* KeepApp */
+@import '../../apps/Keep/assets/css/keep-main.css';
 
 
 * {
@@ -31,59 +36,26 @@ header {
     width: 100vw;
 }
 
-main {
-    display: flex;
-    flex-grow: 1;
-    /* flex: 1 0 auto; */
-}
-
-/* Components */
-
-/* app-header */
-
-.app-header {
-    margin: 0 auto;
-    width: 100vw;
-    height: 80px;
-    display: flex;
-    flex-direction: row;
-    /* justify-content:space-evenly; */
-    background-color: rgb(113, 178, 238);
-    color: rgb(4, 45, 78);
-}
-
-.app-header h1 {
-    margin-left: 20px;
-    /* font-size: 2rem; */
-}
-
-.app-header ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    /* flex-grow: 1; */
-    margin-right: 10px;
-    padding: 0 10px 0 10px;
-    width: 40%;
-}
 
 .clean-list {
     list-style: none;
     margin: 0;
 }
 
-.app-header li {
-    margin-left: 10px;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.app-header .active {
-    font-weight: bold;
-}
+/* main {
+    display: flex;
+    flex-grow: 1;
+    flex: 1 0 auto;
+} */
 
-.app-header a:hover {
-    color: gold;
-}
+/* Components */
+
+
 
 /* Home */
 
@@ -124,8 +96,8 @@ footer {
     /* text-align: center; */
     line-height: 60px;
     height: 60px;
-    background-color: rgb(113, 178, 238);
-    color: rgb(4, 45, 78);
+    background-image: linear-gradient(to right, rgb(100, 7, 143), rgb(238, 212, 94));
+    color: whitesmoke;
     justify-self: auto;
     margin-top: auto;
     /* flex-shrink: 0; */
@@ -149,11 +121,3 @@ footer {
     margin: 0 auto;
 }
 
-@media (min-width: 850px) {
-    .app-header {
-        justify-content: space-evenly;
-        /* margin-bottom: 20px; */
-    }
-
-    
-}

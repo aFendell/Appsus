@@ -1,0 +1,7 @@
+/* Pages */
+@import './pages/KeepApp.css';
+
+
+/* cmps */
+@import './cmps/NoteList.css';
+@import './cmps/NoteTxt.css';
