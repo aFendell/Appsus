@@ -4,7 +4,7 @@ export class EmailApp extends React.Component {
 
     }
     componentDidMount() {
-        console.log('mailApp');
+        console.log('EmailApp');
         
     }
 
