@@ -1,3 +1,10 @@
+/* EmailApp */
+
+@import '../../apps/Email/assets/css/email-main.css';
+
+/* KeepApp */
+
+
 * {
     box-sizing: border-box;
 }
@@ -17,12 +24,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-.main-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 header {
@@ -86,7 +87,14 @@ main {
 
 /* Home */
 
+.main-container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .home {
+
     margin: 0;
     padding: 40px;
     /* background-color: #fff; */
