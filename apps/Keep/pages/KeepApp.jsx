@@ -1,4 +1,4 @@
-export class MissKeep extends React.Component {
+export class KeepApp extends React.Component {
     state = {
 
     }
@@ -6,6 +6,8 @@ export class MissKeep extends React.Component {
         console.log('MissKeep');
         
     }
+
+
 
     render() {
         return <section className="keep-app">

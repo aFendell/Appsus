@@ -1,5 +1,5 @@
 
-export class MisterEmail extends React.Component {
+export class EmailApp extends React.Component {
     state = {
 
     }
