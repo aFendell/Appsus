@@ -1,5 +1,7 @@
 import { keepService } from '../services/keep-service.js'
 import { NoteList } from '../cmps/NoteList.jsx'
+import { NoteDetails } from './NoteDetails.jsx';
+const { Route, Switch } = ReactRouterDOM
 
 export class KeepApp extends React.Component {
     state = {
@@ -33,7 +35,12 @@ export class KeepApp extends React.Component {
         if (!notes) return <div>Loading...</div>
         return <section className="keep-app">
             <h1>KeepApp</h1>
-            <NoteList notes={notes} />
+            <Switch>
+                <Route component={NoteDetails} path="/keep/:noteId" />
+                <Route path="/keep" render={() => (
+                    <NoteList notes={notes} />
+                )} />
+            </Switch>
         </section>
     }
 }

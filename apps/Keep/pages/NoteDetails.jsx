@@ -13,9 +13,9 @@ export class NoteDetails extends React.Component {
     }
 
     loadNote() {
-        const id = this.props.match.params.noteId
+        const {noteId} = this.props.match.params
         // console.log('load note id:', id);
-        keepService.getNoteById(id).then(note => {
+        keepService.getNoteById(noteId).then(note => {
             if (!note) this.props.history.push('/')
             this.setState({ note })
         })
@@ -34,7 +34,7 @@ export class NoteDetails extends React.Component {
         if (!note) return <div>Loading...</div>
         return (
             <div className="note-details">
-                <DynamicCmp note={note} key={note.id} />
+                <DynamicCmp note={note}/>
                 <div className="note-controls">
                     <button onClick={this.onDeleteNote}>Delete Note</button>
                 </div>

@@ -1,11 +1,11 @@
-
-const { NavLink } = ReactRouterDOM
+const { Route, Switch } = ReactRouterDOM
 import { emailService } from '../services/email-service.js'
 import { eventBusService } from '../services/event-bus-service.js'
 import { EmailList } from '../cmps/EmailList.jsx'
 import { EmailAdd } from '../pages/EmailAdd.jsx'
 
 import { EmailFilter } from '../cmps/EmailFilter.jsx'
+import { EmailDetails } from './EmailDetails.jsx'
 
 export class EmailApp extends React.Component {
     state = {
@@ -14,7 +14,7 @@ export class EmailApp extends React.Component {
             title: ''
         },
         newEmail: {
-            
+
         }
     }
     componentDidMount() {
@@ -42,7 +42,7 @@ export class EmailApp extends React.Component {
 
     sendEmail = (sendTo, subject, body) => {
         emailService.addEmail(sendTo, subject, body)
-        this.setState({isNewEmailShown: false})
+        this.setState({ isNewEmailShown: false })
         this.loadEmails()
     }
 
@@ -52,29 +52,33 @@ export class EmailApp extends React.Component {
     }
 
     render() {
-        const { emails, filterBy, isNewEmailShown, newEmail: {sendTo, subject, body} } = this.state
+        const { emails, filterBy, isNewEmailShown, newEmail: { sendTo, subject, body } } = this.state
 
         if (!emails) return <div>Loading...</div>
         return (
 
             <section className="container email-app">
-<div>{emails.filter(({isRead}) =>!isRead).length} unread</div>
+                <div>{emails.filter(({ isRead }) => !isRead).length} unread</div>
                 {/* <EmailFilter onSetFilter={this.onSetFilter} /> */}
-                <EmailList onEmailSetRead={this.onEmailSetRead} emails={emails} />
-
-                <div onClick={() => this.setState({isNewEmailShown: true})}>Add email</div>
+                <div onClick={() => this.setState({ isNewEmailShown: true })}>Add email</div>
+                <Switch>
+                    <Route component={EmailDetails} path="/mail/:emailId/" />
+                    <Route path="/mail" render={(props) => (
+                        <EmailList {...props} onEmailSetRead={this.onEmailSetRead} emails={emails} />
+                    )} />
+                </Switch>
                 {
                     isNewEmailShown && (
-                        <div style={{display: 'flex', flexDirection: 'column'}}>
+                        <div style={{ display: 'flex', flexDirection: 'column' }}>
                             <input value={sendTo} onChange={(event) => this.onSetNewEmailField({
                                 sendTo: event.target.value
-                            })} placeholder="Recipient" type="text"/>
+                            })} placeholder="Recipient" type="text" />
                             <input value={subject} onChange={(event) => this.onSetNewEmailField({
                                 subject: event.target.value
-                            })} placeholder="Subject" type="text"/>
+                            })} placeholder="Subject" type="text" />
                             <textarea value={body} onChange={(event) => this.onSetNewEmailField({
                                 body: event.target.value
-                            })}  placeholder="Email body..." name="" id="" cols="30" rows="10"></textarea>
+                            })} placeholder="Email body..." name="" id="" cols="30" rows="10"></textarea>
                             <div onClick={() => this.sendEmail(sendTo, subject, body)}>Send</div>
                         </div>
                     )
