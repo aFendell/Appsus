@@ -8,6 +8,7 @@ export class EmailDetails extends React.Component {
     }
 
     componentDidMount() {
+        emailService.setEmailRead(this.props.match.params.emailId, true)
         this.loadEmail()
     }
 
@@ -26,20 +27,25 @@ export class EmailDetails extends React.Component {
     }
 
     onDeleteEmail = () => {
+        console.log('delete')
         emailService.deleteEmail(this.state.email.id)
             .then(() => {
-                this.props.history.push('/email')
+                this.props.history.push('/mail')
             })
     }
 
     render() {
         const { email } = this.state
+
         if (!email) return <div>Loading...</div>
         return (
             <div className="container email-details" >
+
                 <p>{email.sendTo}</p>
+                <button onClick={this.onDeleteEmail}>🗑</button>
+                
                 <button onClick={() => this.props.history.push('/mail')} > Go back</button>
-            
+
             </div >
         )
 
