@@ -1,11 +1,12 @@
+const {Link} = ReactRouterDOM
+
 export function NoteImg({ note }) {
     return (
 
         <div className="note">
-            {/* <h3>{note.info.title}</h3> */}
+            <Link to={`/keep/${note.type}/${note.id}`}>
             <img src={note.info.url} alt=""/>
-            {/* <div>{note.info.txt}</div> */}
-
+            </Link>
         </div>
     )
 }

@@ -26,8 +26,6 @@ export class KeepApp extends React.Component {
     //     this.setState({ filterBy }, this.loadKeeps)
     // }
 
-
-
     render() {
         // this.loadKeeps()
         // console.log('rendering keeps');
@@ -36,7 +34,6 @@ export class KeepApp extends React.Component {
         return <section className="keep-app">
             <h1>KeepApp</h1>
             <NoteList notes={notes} />
-
         </section>
     }
 }
