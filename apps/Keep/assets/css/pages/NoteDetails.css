@@ -1,0 +1,8 @@
+.note-details {
+    width: 90%;
+    /* background-color: violet; */
+}
+
+.note-details .note {
+    width: 100%;
+}
