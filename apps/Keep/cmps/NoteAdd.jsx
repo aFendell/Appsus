@@ -35,7 +35,7 @@ export class NoteAdd extends React.Component {
         return (
 
                 <form onSubmit={this.onCreateNote}>
-                {/* <i className="fa fa-trash"></i> */}
+                
                 
                     <label htmlFor="note"></label>
                     <input type="text" id="note" name={type} placeholder="What's on you'r mind..." value={txt}
@@ -45,7 +45,7 @@ export class NoteAdd extends React.Component {
                     <button name="img" onClick={this.onSetType}><i className="fa fa-image"></i></button>
                     <button name="list" onClick={this.onSetType}><i className="fa fa-list"></i></button>
                     <button name="video" onClick={this.onSetType}><i className="fa fa-youtube"></i></button>
-                    <button><i class="fa fa-plus"></i></button>
+                    <button><i className="fa fa-plus"></i></button>
                     </div>
 
                 </form>
