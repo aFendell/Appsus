@@ -1,26 +1,44 @@
 /* Pages */
+
 @import './pages/EmailApp.css';
+/* Cmps */
 
-
+@import './EmailPreview.css';
 /* cmps */
+
 .sidebar {
-    background-color: blue;
+    /* background-color: rgb(181, 229, 241); */
     margin: 0;
-    padding: 0;
+    padding-left: 2rem;
+    padding-top: 1rem;
     width: 150px;
     position: fixed;
     height: 40%;
     overflow: auto;
-    
+    border-right: 1px solid rgb(182, 181, 181);
 }
+
+.sidebar>* {
+    margin-bottom: 0.5rem;
+}
+
+.compose-btn {
+    width: 75%;
+    height: 2rem;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    background-color: whitesmoke;
+    box-shadow: 0px 2px 3px rgba(119, 117, 117, 0.7);
+}
+
 .content {
-    background-color: red;
+    background-color: whitesmoke;
     margin-left: 150px;
     padding: 1px 16px;
     height: 1000px;
-
 }
-.compose-mail{
+
+.compose-mail {
     display: flex;
-     flex-direction: column 
+    flex-direction: column;
 }
