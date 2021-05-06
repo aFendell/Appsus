@@ -5,7 +5,7 @@ export function DynamicCmp({ note }) {
 
     switch (note.type) {
         case 'txt':
-            return <NoteTxt note={note} />
+            return <NoteTxt note={note}/>
         case 'img':
             return <NoteImg note={note} />
     }

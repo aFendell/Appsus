@@ -15,7 +15,7 @@ export class KeepApp extends React.Component {
     }
 
     loadNotes = () => {
-        console.log('enter loadkeeps');
+        console.log('enter loadNotes');
         // keepService.query(this.state.filterBy).then((keeps) => {
         keepService.query().then((notes) => {
             console.log(notes);
@@ -38,9 +38,10 @@ export class KeepApp extends React.Component {
             <Switch>
                 <Route component={NoteDetails} path="/keep/:noteId" />
                 <Route path="/keep" render={() => (
-                    <NoteList notes={notes} />
+                    <NoteList notes={notes} loadNotes={this.loadNotes}/>
                 )} />
             </Switch>
         </section>
     }
 }
+

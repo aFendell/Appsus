@@ -143,7 +143,7 @@ function createNote(noteType, noteTxt) {
             console.log('created new img note')
             break;        
     }
-    gNotes.push(note)
+    gNotes.unshift(note)
     _saveNotesToStorage();
     
     return Promise.resolve()
@@ -156,8 +156,9 @@ function _createTxtNote(txt, title="") {
         isPinned: true,
         info: {
             txt,
-            title
-        }
+            title,
+        },
+        bgColor: "#edfaa6"
     }
     return note;
 }
@@ -171,7 +172,8 @@ function _createImgNote(url) {
             title: "",
             txt: "",
             url
-        }
+        },
+        bgColor: "#4772ff"
     }
     return note;
 }
