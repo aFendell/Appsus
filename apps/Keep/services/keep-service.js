@@ -149,13 +149,14 @@ function createNote(noteType, noteTxt) {
     return Promise.resolve()
 }
 
-function _createTxtNote(txt) {
+function _createTxtNote(txt, title="") {
     var note = {
         id: utilService.makeId(),
         type: "txt",
         isPinned: true,
         info: {
-            txt
+            txt,
+            title
         }
     }
     return note;
