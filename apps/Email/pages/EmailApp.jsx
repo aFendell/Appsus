@@ -24,7 +24,7 @@ export class EmailApp extends React.Component {
 
     loadEmails() {
         console.log('load')
-        emailService.query(this.state.filterBy)// undefind
+        emailService.query(this.state.filterBy)
             .then((emails) => {
                 console.log('emails', emails);
                 this.setState({ emails })
@@ -50,6 +50,13 @@ export class EmailApp extends React.Component {
         emailService.setEmailRead(emailId, isRead)
         this.loadEmails()
     }
+    onDeleteEmail = () => {
+        console.log('delete')
+        emailService.deleteEmail(this.state.email.id)
+            .then(() => {
+                this.props.history.push('/mail')
+            })
+    }
 
     render() {
         const { emails, filterBy, isNewEmailShown, newEmail: { sendTo, subject, body } } = this.state
@@ -60,16 +67,29 @@ export class EmailApp extends React.Component {
             <section className="container email-app">
                 <div>{emails.filter(({ isRead }) => !isRead).length} unread</div>
                 {/* <EmailFilter onSetFilter={this.onSetFilter} /> */}
-                <div onClick={() => this.setState({ isNewEmailShown: true })}>Add email</div>
-                <Switch>
-                    <Route component={EmailDetails} path="/mail/:emailId/" />
-                    <Route path="/mail" render={(props) => (
-                        <EmailList {...props} onEmailSetRead={this.onEmailSetRead} emails={emails} />
-                    )} />
-                </Switch>
+
+                <div className="sidebar">
+                    <button className="compose-btn"onClick={() => this.setState({ isNewEmailShown: true })} >
+                        Compose
+                </button>
+                    <div>InBox()</div>
+                    <div>Started</div>
+                    <div>Sent</div>
+                    <div>Trash</div>
+
+                </div>
+
+                <div className="content">
+                    <Switch>
+                        <Route component={EmailDetails} path="/mail/:emailId/" />
+                        <Route path="/mail" render={(props) => (
+                            <EmailList {...props} onEmailSetRead={this.onEmailSetRead} emails={emails} />
+                        )} />
+                    </Switch>
+                </div>
                 {
                     isNewEmailShown && (
-                        <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div className="compose-mail">
                             <input value={sendTo} onChange={(event) => this.onSetNewEmailField({
                                 sendTo: event.target.value
                             })} placeholder="Recipient" type="text" />

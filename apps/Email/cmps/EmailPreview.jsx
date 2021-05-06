@@ -15,6 +15,8 @@ export function EmailPreview({ email, onEmailSetRead }) {
              <Link to={`/mail/${email.id}`}>
                 {email.sendTo} | {email.subject} | {email.body} | {email.sentAt} | {email.isRead && <button onClick={(event) => markUnread(event, email.id)}>Mark unread</button>}
             </Link>
+           
+
 
            
         </article>

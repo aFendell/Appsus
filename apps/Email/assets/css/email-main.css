@@ -3,3 +3,24 @@
 
 
 /* cmps */
+.sidebar {
+    background-color: blue;
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    position: fixed;
+    height: 40%;
+    overflow: auto;
+    
+}
+.content {
+    background-color: red;
+    margin-left: 150px;
+    padding: 1px 16px;
+    height: 1000px;
+
+}
+.compose-mail{
+    display: flex;
+     flex-direction: column 
+}
