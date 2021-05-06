@@ -1,0 +1,9 @@
+.note-add {
+    margin-bottom: 1rem;
+}
+
+.note-add input {
+    padding: 1em 1.5em;
+    border-radius: 2rem;
+    text-align: center;
+}

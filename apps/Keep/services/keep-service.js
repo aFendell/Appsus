@@ -76,7 +76,8 @@ _createNotes()
 export const keepService = {
     query,
     getNoteById,
-    deleteNote
+    deleteNote,
+    createNote
 }
 
 function query() {
@@ -118,26 +119,42 @@ function _createNotes() {
     var notes = storageService.loadFromStorage(KEY)
     if (!notes || notes.length === 0) {
         var notes = [
-            _createTxtNote('CRUD till you die', utilService.makeLorem(13)),
-            _createTxtNote('Sharpen CSS', utilService.makeLorem(32)),
+            _createTxtNote(utilService.makeLorem(13)),
+            _createTxtNote(utilService.makeLorem(32)),
             _createImgNote("https://img.static-af.com/images/meta/IDname/CITY-MLE-1?aspect_ratio=2:1&max_width=1920"),
-            _createTxtNote('Master React', utilService.makeLorem(17)),
-            _createTxtNote('Tomorrow is tomorrow', utilService.makeLorem(41)),
+            _createTxtNote(utilService.makeLorem(17)),
+            _createTxtNote(utilService.makeLorem(41)),
             _createImgNote("https://www.discoverafrica.com/images/zambia_adventure_vic_falls.jpg"),
-            _createTxtNote('Summer is comming', utilService.makeLorem(23))
+            _createTxtNote(utilService.makeLorem(23))
         ];
     }
     gNotes = notes;
     _saveNotesToStorage();
 }
 
-function _createTxtNote(title, txt) {
+function createNote(noteType, noteTxt) {
+    switch(noteType){
+        case 'txt':
+            var note = _createTxtNote(noteTxt)
+            console.log('created new text note')
+            break;
+        case 'img':
+            var note = _createImgNote(noteTxt)
+            console.log('created new img note')
+            break;        
+    }
+    gNotes.push(note)
+    _saveNotesToStorage();
+    
+    return Promise.resolve()
+}
+
+function _createTxtNote(txt) {
     var note = {
         id: utilService.makeId(),
         type: "txt",
         isPinned: true,
         info: {
-            title,
             txt
         }
     }
