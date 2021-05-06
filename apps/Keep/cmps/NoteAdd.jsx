@@ -24,7 +24,7 @@ export class NoteAdd extends React.Component {
     onCreateNote = () => {
         const { noteType, noteTxt } = this.state
         keepService.createNote(noteType, noteTxt).then(() => {
-            return this.props.history.push('/keep')
+            return this.props.history.push('/keep') // Need fixing
         })
     }
 
