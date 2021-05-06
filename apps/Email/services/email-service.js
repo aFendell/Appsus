@@ -11,11 +11,15 @@ var gEmails = [{
     subject: 'Hello', 
     body: 'Pick up!',
     isRead: true, 
+    isStar: true,
+    isTrash: false,
     sentAt: new Date().toLocaleString(),
 },
 {
     id:utilService.makeId(ID_SIZE), sendTo:'Shira', subject: 'Welcome', body: 'Pick up!',
-    isRead: false, sentAt:new Date().toLocaleString()
+    isRead: false, sentAt:new Date().toLocaleString(),
+    isStar: false,
+    isTrash: false,
 }]
 console.log(gEmails)
 
@@ -37,6 +41,16 @@ function query(filterBy) {
 }
 
 function deleteEmail(emailId) {
+    var email = gEmails.find(function (email) {
+        return emailId === email.id
+    })
+    email.isTrash = true
+    storageService.saveToStorage(KEY,gEmails);
+
+    return Promise.resolve()
+}
+
+function NotInUseDelete(emailId) {
     var emailIdx = gEmails.findIndex(function (email) {
         return emailId === email.id
     })
