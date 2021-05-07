@@ -8,11 +8,6 @@ export function Inbox({ emails, onEmailSetRead, onEmailMoveToTrash }) {
     onEmailSetRead(emailId, false)
 }
 
-const moveToTrash = (event, emailId) => {
-  event.stopPropagation()
-  event.preventDefault()
-  onEmailMoveToTrash(emailId)
-}
   return (
     <div className="email-list">
       {
@@ -20,7 +15,7 @@ const moveToTrash = (event, emailId) => {
         onEmailSetRead={onEmailSetRead} email={email} key={email.id}
         actions={[
           email.isRead && <button onClick={(event) => markUnread(event, email.id)}>Mark unread</button>,
-          <button onClick={(event) => moveToTrash(event, email.id)}>🗑</button>
+          <button onClick={(event) => onEmailMoveToTrash(event, email.id)}>🗑</button>
         ]}
           
         />)}

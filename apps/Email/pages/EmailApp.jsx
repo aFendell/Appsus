@@ -60,20 +60,34 @@ export class EmailApp extends React.Component {
                 this.props.history.push('/mail')
             })
     }
-    onEmailMoveToTrash = (id) => {
+    onEmailMoveToTrash = (event, id) => {
+        event.stopPropagation()
+        event.preventDefault()
+        emailService.setEmailTrash(id, true)
+        this.loadEmails()
+    }
+    untrashEmail = (event, id) => {
+        event.stopPropagation()
+        event.preventDefault()
+        emailService.setEmailTrash(id, false)
+        this.loadEmails()
+    }
+    onEmailDelete = (event, id) => {
+        event.stopPropagation()
+        event.preventDefault()
         emailService.deleteEmail(id)
         this.loadEmails()
     }
 
     render() {
         const { emails, filterBy, isNewEmailShown, newEmail: { sendTo, subject, body } } = this.state
-
+         console.log('render',emails)
         if (!emails) return <div>Loading...</div>
         const unreadCount = emails.filter(({ isRead }) => !isRead).length
         return (
 
             <section className="container email-app">
-                <div>{unreadCount} unread</div>
+                {/* <div>{unreadCount} unread</div> */}
                 {/* <EmailFilter onSetFilter={this.onSetFilter} /> */}
 
                 <div className="sidebar">
@@ -87,7 +101,9 @@ export class EmailApp extends React.Component {
 
                 <div className="content">
                     <Switch>
-                        <Route component={EmailDetails} path="/mail/content/:emailId/" />
+                        <Route render={(props) => (
+                            <EmailDetails {...props} loadEmails={() => this.loadEmails()} />
+                        )} path="/mail/content/:emailId/" />
                         <Route path="/mail/inbox" render={(props) => (
                             <Inbox {...props} onEmailSetRead={this.onEmailSetRead} 
                             onEmailMoveToTrash={this.onEmailMoveToTrash} emails={emails} />
@@ -96,7 +112,7 @@ export class EmailApp extends React.Component {
                             <Starred {...props} onEmailSetRead={this.onEmailSetRead} emails={emails} />
                         )} />
                          <Route path="/mail/trash" render={(props) => (
-                            <Trash {...props} onEmailSetRead={this.onEmailSetRead} emails={emails} />
+                            <Trash {...props} onEmailDelete={this.onEmailDelete}  untrashEmail={this.untrashEmail} emails={emails} />
                         )} />
                     </Switch>
                 </div>

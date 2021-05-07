@@ -40,17 +40,17 @@ function query(filterBy) {
     return Promise.resolve(gEmails)
 }
 
-function deleteEmail(emailId) {
+function setEmailTrash(emailId, isTrash) {
     var email = gEmails.find(function (email) {
         return emailId === email.id
     })
-    email.isTrash = true
+    email.isTrash = isTrash
     storageService.saveToStorage(KEY,gEmails);
 
     return Promise.resolve()
 }
 
-function NotInUseDelete(emailId) {
+function deleteEmail(emailId) {
     var emailIdx = gEmails.findIndex(function (email) {
         return emailId === email.id
     })
@@ -86,6 +86,7 @@ export const emailService = {
     query,
     getEmailById,
     deleteEmail,
+    setEmailTrash,
     addEmail,
     setEmailRead,
 }

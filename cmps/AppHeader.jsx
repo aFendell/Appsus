@@ -7,7 +7,7 @@ export function AppHeader(props) {
             <ul className="clean-list">
 
                 <li><NavLink exact to="/">Home</NavLink></li>
-                <li><NavLink exact to="/mail">Mail</NavLink></li>
+                <li><NavLink exact to="/mail/inbox">Mail</NavLink></li>
                 <li><NavLink exact to="/keep">Keep</NavLink></li>
                 <li><NavLink to="/about">About</NavLink></li>
             </ul>

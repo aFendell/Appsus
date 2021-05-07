@@ -8,8 +8,10 @@ export class EmailDetails extends React.Component {
     }
 
     componentDidMount() {
+        const {loadEmails} = this.props
         emailService.setEmailRead(this.props.match.params.emailId, true)
         this.loadEmail()
+        loadEmails()
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -42,9 +44,12 @@ export class EmailDetails extends React.Component {
             <div className="container email-details" >
 
                 <p>{email.sendTo}</p>
-                <button onClick={this.onDeleteEmail}>🗑</button>
+                <p>{email.message}</p>
+                <p>{email.body}</p>
+                <button  class="btn-trash" onClick={this.onDeleteEmail}><img className="img" src="assets/img/garbage.png" /></button>
                 
-                <button onClick={() => this.props.history.push('/mail')} > Go back</button>
+                <button onClick={() => this.props.history.push('/mail/inbox')} > Go back</button>
+                
 
             </div >
         )
