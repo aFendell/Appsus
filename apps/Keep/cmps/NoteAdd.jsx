@@ -34,6 +34,7 @@ export class NoteAdd extends React.Component {
     }
 
     onCreateNote = (ev) => {
+        ev.preventDefault()
         const { noteType, noteStr } = this.state
         keepService.createNote(noteType, noteStr).then(() => {
             return this.setState({noteType: "txt", noteStr: ""})
