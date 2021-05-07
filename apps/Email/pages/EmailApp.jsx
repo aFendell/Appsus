@@ -92,11 +92,11 @@ export class EmailApp extends React.Component {
 
                 <div className="sidebar">
                     <button className="compose-btn"onClick={() => this.setState({ isNewEmailShown: true })} >
-                        Compose
+                    <label class="plus"><i class="fas fa-plus"></i></label> Compose
                 </button>
-                    <div><NavLink to="/mail/inbox">Inbox ({unreadCount})</NavLink></div>
+                    <div><NavLink to="/mail/inbox"><label class="inbox"><i class="fas fa-inbox"></i> </label>Inbox ({unreadCount})</NavLink></div>
                     <div><NavLink to="/mail/starred">Starred</NavLink></div>
-                    <div><NavLink to="/mail/trash">Trash</NavLink></div>
+                    <div><NavLink to="/mail/trash"><label class="trash"><i  class="far fa-trash-alt"></i> </label>Trash</NavLink></div>
                 </div>
 
                 <div className="content">
@@ -119,7 +119,7 @@ export class EmailApp extends React.Component {
                 {
                     isNewEmailShown && (
                         <div className="compose-mail">
-                            <input value={sendTo} onChange={(event) => this.onSetNewEmailField({
+                            <input className="header" value={sendTo} onChange={(event) => this.onSetNewEmailField({
                                 sendTo: event.target.value
                             })} placeholder="Recipient" type="text" />
                             <input value={subject} onChange={(event) => this.onSetNewEmailField({
@@ -128,7 +128,7 @@ export class EmailApp extends React.Component {
                             <textarea value={body} onChange={(event) => this.onSetNewEmailField({
                                 body: event.target.value
                             })} placeholder="Email body..." name="" id="" cols="30" rows="10"></textarea>
-                            <div onClick={() => this.sendEmail(sendTo, subject, body)}>Send</div>
+                            <div onClick={() => this.sendEmail(sendTo, subject, body)}><label class="plane"><i class="far fa-paper-plane"></i></label>  Send</div>
                         </div>
                     )
                 }
