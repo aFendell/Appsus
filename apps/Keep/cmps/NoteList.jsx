@@ -5,8 +5,6 @@ import { NoteAdd } from './NoteAdd.jsx';
 export function NoteList(props) {
     return (
         <div className="list-container">
-
-
             <div className="note-add">
                 <NoteAdd loadNotes={props.loadNotes} />
             </div>
