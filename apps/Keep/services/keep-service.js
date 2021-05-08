@@ -77,7 +77,8 @@ export const keepService = {
     query,
     getNoteById,
     deleteNote,
-    createNote
+    createNote,
+    saveNote
 }
 
 function query() {
@@ -94,6 +95,29 @@ function query() {
     return Promise.resolve(gNotes)
 }
 
+function saveNote(note) {
+    console.log('note to save', note);
+    return note.id ? _updateNote(note) : _addNote(note)
+    // return note.id ? _updateNote(note) : _addNote(note)
+}
+
+function _addNote(noteToAdd) {
+    var note = _createCar(noteToAdd.vendor, noteToAdd.speed)
+    gNotes.unshift(note)
+    _saveNotesToStorage();
+    return Promise.resolve(note)
+}
+
+function _updateNote(noteToUpdate) {
+    console.log('updating note:', noteToUpdate);
+    var noteIdx = gNotes.findIndex(function (note) {
+        return note.id === noteToUpdate.id;
+    })
+    gNotes.splice(noteIdx, 1, noteToUpdate)
+    _saveNotesToStorage();
+    return Promise.resolve(noteToUpdate)
+}
+
 function deleteNote(noteId) {
     var noteIdx = gNotes.findIndex((note) => {
         return noteId === note.id
@@ -105,7 +129,6 @@ function deleteNote(noteId) {
 }
 
 function getNoteById(noteId) {
-    console.log('getNoteById');
     var note = gNotes.find(function (note) {
         if (noteId === note.id) {
             return note
@@ -132,14 +155,14 @@ function _createNotes() {
     _saveNotesToStorage();
 }
 
-function createNote(noteType, noteTxt) {
+function createNote(noteType, noteStr) {
     switch(noteType){
         case 'txt':
-            var note = _createTxtNote(noteTxt)
+            var note = _createTxtNote(noteStr)
             console.log('created new text note')
             break;
         case 'img':
-            var note = _createImgNote(noteTxt)
+            var note = _createImgNote(noteStr)
             console.log('created new img note')
             break;        
     }
@@ -173,7 +196,7 @@ function _createImgNote(url) {
             txt: "",
             url
         },
-        bgColor: "#4772ff"
+        bgColor: "#edfaa6"
     }
     return note;
 }

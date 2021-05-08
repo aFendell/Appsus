@@ -1,3 +1,4 @@
+const { Link } = ReactRouterDOM
 import { keepService } from "../services/keep-service.js"
 import { DynamicCmp } from '../cmps/DynamicCmp.jsx';
 
@@ -27,12 +28,26 @@ export class NoteDetails extends React.Component {
         })
     }
 
-    onChangeColor = (ev) => {
-        console.log('color value:', ev.target.value);
-        const color = ev.target.value
-        // this.setState({})
+    handleChange = ({ target }) => {
+        console.log('target changed');
+        const field = target.name
+        const value = target.type === 'number' ? +target.value : target.value
+        this.setState(prevState => ({
+            note: {
+                ...prevState.note,
+                [field]: value
+            }
+        }), () => keepService.saveNote(this.state.note))
     }
 
+    // onChangeColor = (ev) => {
+    //     console.log('color value:', ev.target.value);
+    //     const color = ev.target.value
+    //     const bgColor = this.state.note.bgColor
+    //     console.log('color to set:', color);
+    //     this.setState({ bgColor: color })
+    //     console.log('changed state color:', this.state.note.bgColor);
+    // }
 
     render() {
         const { note } = this.state
@@ -41,16 +56,9 @@ export class NoteDetails extends React.Component {
             <div className="note-details">
                 <DynamicCmp note={note} />
                 <div className="note-controls">
-
-                    {/* <button >
-                        <i className="fa fa-palette">
-                            <input className="" type="color" name="" id="" />
-                        </i>
-                    </button> */}
-
                     <label htmlFor="set-color" className="set-color">
                         <i className="fa fa-palette"></i>
-                        <input className="display-none" type="color" onChange={this.onChangeColor} id="set-color" />
+                        <input className="display-none" name="bgColor" type="color" onInput={this.handleChange} id="set-color" />
                     </label>
 
                     <button >
@@ -59,6 +67,8 @@ export class NoteDetails extends React.Component {
                     <button onClick={this.onDeleteNote}>
                         <i className="fas fa-trash-alt"></i>
                     </button>
+                    <Link to={`/keep`}><i className="fas fa-arrow-left"></i></Link>
+                
 
                 </div>
             </div>
@@ -66,4 +76,3 @@ export class NoteDetails extends React.Component {
 
     }
 }
-

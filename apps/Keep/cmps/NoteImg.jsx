@@ -1,12 +1,18 @@
-const {Link} = ReactRouterDOM
+const { Link } = ReactRouterDOM
 
 export function NoteImg({ note }) {
     return (
 
-        <div className="note" style={{backgroundColor: note.bgColor}}>
-            <Link to={`/keep/${note.id}`}>
-            <img src={note.info.url} alt=""/>
-            </Link>
+        <div className="note" style={{ backgroundColor: note.bgColor }}>
+
+
+
+            <img src={note.info.url} alt="" />
+            <div className="edit-btn">
+                <Link to={`/keep/${note.id}`}>
+                    <i className="fas fa-edit"></i>
+                </Link>
+            </div>
         </div>
     )
 }

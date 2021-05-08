@@ -3,13 +3,15 @@ import { NoteAdd } from './NoteAdd.jsx';
 
 
 export function NoteList(props) {
-    return(
+    return (
         <div className="list-container">
+
+
             <div className="note-add">
-            <NoteAdd loadNotes={props.loadNotes}/>
+                <NoteAdd loadNotes={props.loadNotes} />
             </div>
-            <div  className="note-list">
-            {props.notes.map(note => <DynamicCmp note={note} key={note.id}/>)}
+            <div className="note-list">
+                {props.notes.map(note => <DynamicCmp note={note} key={note.id} />)}
             </div>
         </div>
     )

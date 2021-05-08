@@ -1,13 +1,18 @@
-const {Link} = ReactRouterDOM
+const { Link } = ReactRouterDOM
 
 export function NoteTxt({ note }) {
     return (
 
-        <div className="note" style={{backgroundColor: note.bgColor}}>
+        <div className="note" style={{ backgroundColor: note.bgColor }} contentEditable="true" suppressContentEditableWarning={true}>
+                <h3>{note.info.title}</h3>
+                <p>{note.info.txt}</p>
+            <div className="edit-btn">
             <Link to={`/keep/${note.id}`}>
-            <h3>{note.info.title}</h3>
-            <div>{note.info.txt}</div>
+                <i className="fas fa-edit"></i>
             </Link>
+                </div>    
+            
+            
 
         </div>
     )
