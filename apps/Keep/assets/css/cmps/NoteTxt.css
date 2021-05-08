@@ -11,6 +11,7 @@
     min-height: 20em;
     /* min-width: 8em; */
     width: 20em;
+    max-width: 20em;
     padding: 1.5em 1.5em;
 }
 
