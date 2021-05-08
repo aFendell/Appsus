@@ -12,7 +12,7 @@ export function EmailPreview({ email, onEmailSetRead, actions }) {
     return (
         <article className={'email-preview ' + previewClass}>
             <Link to={`/mail/content/${email.id}`}>
-                {email.isStar ? <label class="star"><i class="far fa-star"></i></label> : ''} | {email.sendTo} | {email.subject} | {length} | {email.sentAt}{actions}
+                {email.isStar ? <label class="star"><i class="fas fa-star"></i></label> : <label class="star"><i class="far fa-star"></i></label>} | {email.sendTo} | {email.subject} | {length} | {email.sentAt}{actions}
 
                 {/* {email.isRead && <React.Fragment>
                     <button><img className="img" src="assets/img/envelope.png"

@@ -13,9 +13,8 @@ import {Trash} from '../cmps/Trash.jsx'
 export class EmailApp extends React.Component {
     state = {
         emails: null,
-        filterBy: {
-            title: ''
-        },
+        filterBy: '',
+     
         newEmail: {
 
         }
@@ -29,15 +28,16 @@ export class EmailApp extends React.Component {
         console.log('load')
         emailService.query(this.state.filterBy)
             .then((emails) => {
-                console.log('emails', emails);
+                //console.log('emails', emails);
                 this.setState({ emails })
                 //eventBusService.emit('email-count', email.length)
             })
     }
 
     onSetFilter = (filterBy) => {
-        this.setState({ filterBy: { ...this.state.filterBy, ...filterBy } }, this.loadBooks)
+        this.setState({ filterBy}, this.loadEmails)
     }
+    
 
     onSetNewEmailField = (updates) => {
         this.setState({ newEmail: { ...this.state.newEmail, ...updates } })
@@ -51,6 +51,12 @@ export class EmailApp extends React.Component {
 
     onEmailSetRead = (emailId, isRead) => {
         emailService.setEmailRead(emailId, isRead)
+        this.loadEmails()
+    }
+     
+    onEmailSetStar = (emailId, isStar) => {
+        console.log('star')
+        emailService.setEmailStar(emailId, isStar)
         this.loadEmails()
     }
     onDeleteEmail = () => {
@@ -83,20 +89,22 @@ export class EmailApp extends React.Component {
         const { emails, filterBy, isNewEmailShown, newEmail: { sendTo, subject, body } } = this.state
          console.log('render',emails)
         if (!emails) return <div>Loading...</div>
+       
         const unreadCount = emails.filter(({ isRead }) => !isRead).length
         return (
 
             <section className="container email-app">
                 {/* <div>{unreadCount} unread</div> */}
                 {/* <EmailFilter onSetFilter={this.onSetFilter} /> */}
+                <EmailFilter onSetFilter={this.onSetFilter} />
 
                 <div className="sidebar">
                     <button className="compose-btn"onClick={() => this.setState({ isNewEmailShown: true })} >
                     <label class="plus"><i class="fas fa-plus"></i></label> Compose
                 </button>
-                    <div><NavLink to="/mail/inbox"><label class="inbox"><i class="fas fa-inbox"></i> </label>Inbox ({unreadCount})</NavLink></div>
-                    <div><NavLink to="/mail/starred"><label class="star"><i class="fas fa-star"></i> </label>Starred</NavLink></div>
-                    <div><NavLink to="/mail/trash"><label class="trash"><i  class="far fa-trash-alt"></i> </label>Trash</NavLink></div>
+                    <div className="inbox1"><NavLink to="/mail/inbox"><label className="inbox"><i className="fas fa-inbox"></i> </label>Inbox ({unreadCount})</NavLink></div>
+                    <div  className="star1"><NavLink to="/mail/starred"><label className="star"><i className="fas fa-star"></i> </label>Starred</NavLink></div>
+                    <div  className="trash1"><NavLink to="/mail/trash"><label className="trash"><i  className="far fa-trash-alt"></i> </label>Trash</NavLink></div>
                 </div>
 
                 <div className="content">
@@ -105,11 +113,11 @@ export class EmailApp extends React.Component {
                             <EmailDetails {...props} loadEmails={() => this.loadEmails()} />
                         )} path="/mail/content/:emailId/" />
                         <Route path="/mail/inbox" render={(props) => (
-                            <Inbox {...props} onEmailSetRead={this.onEmailSetRead} 
+                            <Inbox {...props} className="side-inbox" onEmailSetRead={this.onEmailSetRead} 
                             onEmailMoveToTrash={this.onEmailMoveToTrash} emails={emails} />
                         )} />
                          <Route path="/mail/starred" render={(props) => (
-                            <Starred {...props} onEmailSetRead={this.onEmailSetRead} emails={emails} />
+                            <Starred {...props} onEmailSetStar={this.onEmailSetStar} emails={emails} />
                         )} />
                          <Route path="/mail/trash" render={(props) => (
                             <Trash {...props} onEmailDelete={this.onEmailDelete}  untrashEmail={this.untrashEmail} emails={emails} />

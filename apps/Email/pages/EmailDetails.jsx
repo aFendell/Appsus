@@ -44,11 +44,12 @@ export class EmailDetails extends React.Component {
             <div className="container email-details" >
 
                 <p>{email.sendTo}</p>
-                <p>{email.message}</p>
+                <p>{email. subject}</p>
                 <p>{email.body}</p>
+                <p>{email.sentAt}</p>
                 <button  class="btn-trash" onClick={this.onDeleteEmail}></button>
                 
-                <button onClick={() => this.props.history.push('/mail/inbox')}><i class="fas fa-arrow-left"></i> Back to mail</button>
+                <button className="btn-back" onClick={() => this.props.history.push('/mail/inbox')}><i class="fas fa-arrow-left"></i> Back to mail</button>
             </div >
         )
 

@@ -30,6 +30,26 @@
     background-color: whitesmoke;
     box-shadow: 0px 2px 3px rgba(206, 204, 204, 0.7);
     border: 1px solid silver;
+    text-decoration: none;
+}
+.compose-btn:hover{
+    font-weight: bold;
+   background-color: #ccc;
+}
+.btn-back{
+    width: 15%;
+    height: 2rem;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    background-color: whitesmoke;
+    box-shadow: 0px 2px 3px rgba(206, 204, 204, 0.7);
+    border: 1px solid silver;
+
+}
+.btn-back:hover{
+    font-weight: bold;
+    background-color: #ccc;
+
 }
 
 .content {
@@ -53,5 +73,30 @@
     background-color: whitesmoke;
     box-shadow: 0px 2px 3px rgba(206, 204, 204, 0.7);
     border: 1px solid silver;
+    
+    outline: none;
 
+}
+.filter:hover{
+    font-weight: bold;
+    background-color: #ccc;
+
+}
+
+.inbox1:hover{
+    font-weight: bold;
+    background-color: #ccc;
+}
+.star1:hover{
+    font-weight: bold;
+    background-color: #ccc;
+}
+.trash1:hover{
+    font-weight: bold;
+    background-color: #ccc;
+}
+
+.untrash{
+    color:olive;
+    border:0;
 }
