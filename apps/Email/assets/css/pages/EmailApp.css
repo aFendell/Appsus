@@ -48,7 +48,11 @@ background-color:dodgerblue;
 .plane{
     color:red;
 }
+
 .plus{
     color:sandybrown;
+}
+.star{
+    fill:yellow;
 }
 
