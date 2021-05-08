@@ -16,6 +16,15 @@
     cursor: pointer;
 }
 
+.note-controls i {
+    background-color: transparent;
+    border: none;
+    color: rgb(95, 6, 146);
+    padding: 0.75rem 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
 .set-color {
     background-color: transparent;
     border: none;

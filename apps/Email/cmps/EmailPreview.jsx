@@ -14,7 +14,7 @@ export function EmailPreview({ email, onEmailSetRead, actions }) {
        {email.isRead && <React.Fragment>
            <button><img className="img" src="assets/img/envelope.png"
             onClick={() =>{<img className="img" src="assets/img/message.png" />}}
-            // onClick={() => this.setState({ isNewEmailShown: true })}
+            onClick={() => this.setState({ isNewEmailShown: true })}
             /></button>
        </React.Fragment>}
        {!email.isRead && <React.Fragment>

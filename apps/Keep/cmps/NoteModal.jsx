@@ -1,26 +1,23 @@
-import { DynamicCmp } from './DynamicCmp.jsx';
-import { NoteAdd } from './NoteAdd.jsx';
-import {NoteModal} from './NoteModal.jsx'
 
 
-export function NoteList(props) {
-    return (
-        <div className="list-container">
+export class NoteModal extends React.Component {
+    state = {
+        isModalShown: false
+    }
 
-
-            <div className="note-add">
-                <NoteAdd loadNotes={props.loadNotes} />
-            </div>
-            <div className="note-list">
-                {props.notes.map(note => <DynamicCmp note={note} key={note.id} />)}
-            </div>
-                <NoteModal/>
-            {/* <div className="modal-container">
-                <button>Open Modal</button>
-                <div className="modal" id="modal">
+    onToggleModal = () => {
+        this.setState(({ isModalShown }) => ({ isModalShown: !isModalShown }))
+        console.log('open / close modal');
+    }
+    render() {
+        const { isModalShown } = this.state
+        return (
+            <div className="modal-container">
+                <button onClick={this.onToggleModal}>Open Modal</button>
+                <div className={isModalShown ? "modal active" : "modal"} id="modal">
                     <div className="modal-header">
                         <div className="modal-titel">Note Modal</div>
-                        <button className="close-btn">&times;</button>
+                        <button className="close-btn" onClick={this.onToggleModal}>&times;</button>
                     </div>
                     <div className="modal-body">
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil velit exercitationem
@@ -32,9 +29,8 @@ export function NoteList(props) {
                         repellat fuga ipsa blanditiis sequi optio libero obcaecati!
                 </div>
                 </div>
-                <div id="overlay"></div>
-            </div> */}
-
-        </div>
-    )
+                <div className={isModalShown ? "overlay active" : "overlay"} id="overlay" onClick={this.onToggleModal}></div>
+            </div>
+        )
+    }
 }

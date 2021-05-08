@@ -16,7 +16,6 @@ export class NoteAdd extends React.Component {
         return this.setState({ noteStr: value })
     }
 
-
     onSetType = (ev) => {
         ev.preventDefault()
         const type = ev.target.name
@@ -50,7 +49,7 @@ export class NoteAdd extends React.Component {
                     <label htmlFor="note"></label>
                     <input type="text" id="note" name={noteType} placeholder={inputPlaceholder} value={noteStr}
                         onChange={this.handelChange} />
-                    <div className="control-panel">
+                    <div className="control">
                     <button name="txt" onClick={this.onSetType}><i className="fas fa-font"></i></button>
                     <button name="img" onClick={this.onSetType}><i className="far fa-image"></i></button>
                     <button name="list" onClick={this.onSetType}><i className="fas fa-list"></i></button>
@@ -60,5 +59,4 @@ export class NoteAdd extends React.Component {
                 </form>
         )
     }
-
 }

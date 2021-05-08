@@ -34,7 +34,6 @@ export class KeepApp extends React.Component {
         const { notes } = this.state
         if (!notes) return <div>Loading...</div>
         return <section className="keep-app">
-            <h1>KeepApp</h1>
             <Switch>
                 <Route component={NoteDetails} path="/keep/:noteId" />
                 <Route path="/keep" render={() => (
