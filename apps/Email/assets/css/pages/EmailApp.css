@@ -17,6 +17,10 @@
     height: 80%;
 }
 
+.compose-mail .header{
+background-color:dodgerblue;
+}
+
 .btn-trash{
     height: 50px;
     width: 20px;
@@ -26,5 +30,25 @@
   
 }
 
+.btn-env{
+    border: 0;
+}
 
+.inbox{
+    color:green;
+}
+
+.trash{
     
+    color:indigo;
+    text-decoration: none;
+    border: 0;
+}
+
+.plane{
+    color:red;
+}
+.plus{
+    color:sandybrown;
+}
+

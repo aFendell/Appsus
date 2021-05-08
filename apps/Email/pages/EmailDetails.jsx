@@ -46,9 +46,9 @@ export class EmailDetails extends React.Component {
                 <p>{email.sendTo}</p>
                 <p>{email.message}</p>
                 <p>{email.body}</p>
-                <button  className="btn-trash" onClick={this.onDeleteEmail}><img className="img" src="assets/img/garbage.png" /></button>
+                <button  class="btn-trash" onClick={this.onDeleteEmail}></button>
                 
-                <button onClick={() => this.props.history.push('/mail/inbox')} > Go back</button>
+                <button onClick={() => this.props.history.push('/mail/inbox')}><i class="fas fa-arrow-left"></i> Back to mail</button>
                 
 
             </div >

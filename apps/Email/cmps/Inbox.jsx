@@ -8,14 +8,23 @@ export function Inbox({ emails, onEmailSetRead, onEmailMoveToTrash }) {
     onEmailSetRead(emailId, false)
 }
 
+const markread = (event, emailId) => {
+  event.stopPropagation()
+  event.preventDefault()
+  onEmailSetRead(emailId, true)
+}
+
   return (
     <div className="email-list">
       {
       filteredEmails.map(email => <EmailPreview 
         onEmailSetRead={onEmailSetRead} email={email} key={email.id}
         actions={[
-          email.isRead && <button onClick={(event) => markUnread(event, email.id)}>Mark unread</button>,
-          <button onClick={(event) => onEmailMoveToTrash(event, email.id)}>🗑</button>
+          email.isRead && <button className="btn-env" onClick={(event) => markUnread(event, email.id)}><i class="far fa-envelope-open"></i></button>,
+          !email.isRead && <button className="btn-env" onClick={(event) => markread(event, email.id)}><i class="far fa-envelope"></i></button>,
+          <button  className="trash" onClick={(event) => onEmailMoveToTrash(event, email.id)}>
+           <i class="far fa-trash-alt"></i></button>
+      
         ]}
           
         />)}
