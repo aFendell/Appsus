@@ -82,7 +82,6 @@ export const keepService = {
 }
 
 function query() {
-    console.log('query resolve gKeeps');
     // if (filterBy) {
     //     var { title } = filterBy
     //     const filteredKeeps = gKeeps.filter(keep => {
@@ -96,13 +95,11 @@ function query() {
 }
 
 function saveNote(note) {
-    console.log('note to save', note);
     return note.id ? _updateNote(note) : _addNote(note)
-    // return note.id ? _updateNote(note) : _addNote(note)
 }
 
 function _addNote(noteToAdd) {
-    var note = _createCar(noteToAdd.vendor, noteToAdd.speed)
+    var note = _createNote(noteToAdd.info.txt)
     gNotes.unshift(note)
     _saveNotesToStorage();
     return Promise.resolve(note)
@@ -138,7 +135,6 @@ function getNoteById(noteId) {
 }
 
 function _createNotes() {
-    console.log('creating notes');
     var notes = storageService.loadFromStorage(KEY)
     if (!notes || notes.length === 0) {
         var notes = [
@@ -159,11 +155,9 @@ function createNote(noteType, noteStr) {
     switch(noteType){
         case 'txt':
             var note = _createTxtNote(noteStr)
-            console.log('created new text note')
             break;
         case 'img':
             var note = _createImgNote(noteStr)
-            console.log('created new img note')
             break;        
     }
     gNotes.unshift(note)

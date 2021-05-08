@@ -10,9 +10,7 @@ export class NoteEdit extends React.Component {
 
     handelChange = (ev) => {
         // const field = ev.target.name
-        // console.log('field:', field);
         const value = ev.target.value
-        // console.log('value:', value);
         return this.setState({ noteStr: value })
     }
 
