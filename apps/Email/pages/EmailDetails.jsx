@@ -49,8 +49,6 @@ export class EmailDetails extends React.Component {
                 <button  class="btn-trash" onClick={this.onDeleteEmail}></button>
                 
                 <button onClick={() => this.props.history.push('/mail/inbox')}><i class="fas fa-arrow-left"></i> Back to mail</button>
-                
-
             </div >
         )
 

@@ -5,20 +5,22 @@
     flex-direction: column;
     justify-content: space-between;
     width: 40%;
-    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
     margin: 1rem;
     border-radius: 0.25rem;
-    min-height: 8em;
-    min-width: 8em;
-    padding: 1em;
+    min-height: 20em;
+    /* min-width: 8em; */
+    width: 20em;
+    padding: 1.5em 1.5em;
 }
 
 .note img {
     width: 100%;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
 }
 
-.note i {
+.edit-btn {
     background-color: transparent;
     border: none;
     color: rgb(95, 6, 146);
@@ -28,4 +30,3 @@
     position: relative;
     bottom: 0px;
 }
-

@@ -95,7 +95,7 @@ export class EmailApp extends React.Component {
                     <label class="plus"><i class="fas fa-plus"></i></label> Compose
                 </button>
                     <div><NavLink to="/mail/inbox"><label class="inbox"><i class="fas fa-inbox"></i> </label>Inbox ({unreadCount})</NavLink></div>
-                    <div><NavLink to="/mail/starred">Starred</NavLink></div>
+                    <div><NavLink to="/mail/starred"><label class="star"><i class="fas fa-star"></i> </label>Starred</NavLink></div>
                     <div><NavLink to="/mail/trash"><label class="trash"><i  class="far fa-trash-alt"></i> </label>Trash</NavLink></div>
                 </div>
 
@@ -128,7 +128,7 @@ export class EmailApp extends React.Component {
                             <textarea value={body} onChange={(event) => this.onSetNewEmailField({
                                 body: event.target.value
                             })} placeholder="Email body..." name="" id="" cols="30" rows="10"></textarea>
-                            <div onClick={() => this.sendEmail(sendTo, subject, body)}><label class="plane"><i class="far fa-paper-plane"></i></label>  Send</div>
+                            <div onClick={() => this.sendEmail(sendTo, subject, body)}><label className="plane"><i class="far fa-paper-plane"></i></label>  Send</div>
                         </div>
                     )
                 }
