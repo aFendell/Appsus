@@ -1,0 +1,44 @@
+body {
+    background-color:beige;
+    text-align: center;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.book-list > *:not(:first-child) {
+    margin-left: 20px;
+}
+
+.book-preview {
+    box-shadow: 0 0px 3px 2px #7e7d7d78;
+    padding: 10px;
+    text-align: center;
+}
+article :hover{
+   background-color:darkseagreen
+}
+
+.book-preview img {
+    width: 100px;
+}
+
+.book-filter {
+    padding: 15px 0;
+}
+.book-filter .label:not(:first-of-type) {
+    margin-left: 10px;
+}
+.book-filter input {
+    margin-left: 5px;
+}
+ .book-details img{
+     width: 250px;
+     height: 300px;
+ }
+.price-class{
+    color: red;
+}
+ 
+

@@ -43,8 +43,8 @@ const markStar = (event, emailId) => {
         onEmailSetRead={onEmailSetRead} email={email} key={email.id}
         
         actions={[
-          email.isStar && <button className="star" onClick={(event) => markUnStar(event, email.id)}><i class="fas fa-star"></i></button>,
-          !email.isStar && <button className="star" onClick={(event) => markStar(event, email.id)}><i class="far fa-star"></i></button>,
+          // email.isStar && <button className="star" onClick={(event) => markUnStar(event, email.id)}><i class="fas fa-star"></i></button>,
+          // !email.isStar && <button className="star" onClick={(event) => markStar(event, email.id)}><i class="far fa-star"></i></button>,
           email.isRead && <button className="btn-env" onClick={(event) => markUnread(event, email.id)}><i class="far fa-envelope-open"></i></button>,
           !email.isRead && <button className="btn-env" onClick={(event) => markread(event, email.id)}><i class="far fa-envelope"></i></button>,
           <button  className="trash" onClick={(event) => onEmailMoveToTrash(event, email.id)}>

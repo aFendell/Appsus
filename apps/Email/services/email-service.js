@@ -7,20 +7,62 @@ const KEY = 'emails';
 const ID_SIZE = 6;
 var gEmails = [{
     id: utilService.makeId(ID_SIZE),
-    sendTo: 'Dana',
-    subject: 'Hello',
-    body: 'Pick up!',
-    isRead: true,
+    sendTo: 'Slack',
+    subject: 'Password',
+    body: 'Please send me a new password',
+    isRead: false,
     isStar: true,
     isTrash: false,
     sentAt: new Date().toLocaleString(),
 },
 {
-    id: utilService.makeId(ID_SIZE), sendTo: 'Shira', subject: 'Welcome', body: 'Pick up!',
+    id: utilService.makeId(ID_SIZE), sendTo: 'Shira', subject: '',
+     body: 'I was happy  to hear that everything went well',
     isRead: false, sentAt: new Date().toLocaleString(),
     isStar: false,
     isTrash: false,
-}]
+},
+{
+    id: utilService.makeId(ID_SIZE),
+    sendTo: 'Library',
+    subject: 'New order',
+    body: 'I want to order new books',
+    isRead: false,
+    isStar: true,
+    isTrash: false,
+    sentAt: new Date().toLocaleString(),
+},
+{
+    id: utilService.makeId(ID_SIZE),
+    sendTo: 'Assaf',
+    subject: 'Project',
+    body: 'Please look at the last changes in the project',
+    isRead: false,
+    isStar: true,
+    isTrash: false,
+    sentAt: new Date().toLocaleString(),
+},
+{
+    id: utilService.makeId(ID_SIZE),
+    sendTo: 'My parents',
+    subject: 'visit',
+    body: 'we want to visit you soon.. ',
+    isRead: false,
+    isStar: true,
+    isTrash: false,
+    sentAt: new Date().toLocaleString(),
+},
+{
+id: utilService.makeId(ID_SIZE),
+sendTo: 'School prinncipal ',
+subject: 'Parent teacher',
+body: 'Maybe we can call a parent meeting at the school',
+isRead: false,
+isStar: true,
+isTrash: false,
+sentAt: new Date().toLocaleString(),
+},
+]
 console.log(gEmails)
 
 //_createEmails();

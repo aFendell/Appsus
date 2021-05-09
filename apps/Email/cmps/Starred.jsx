@@ -33,10 +33,10 @@ const markStar = (event, emailId) => {
     <div className="email-list">
       {starEmails.map(email => <EmailPreview
         email={email} key={email.id}
-        actions={[
-          email.isStar && <button className="star" onClick={(event) => markUnStar(event, email.id)}><i class="fas fa-star"></i></button>,
-          !email.isStar && <button className="star" onClick={(event) => markStar(event, email.id)}><i class="far fa-star"></i></button>
-        ]}
+        // actions={[
+        //   email.isStar && <button className="star" onClick={(event) => markUnStar(event, email.id)}><i class="fas fa-star"></i></button>,
+        //   !email.isStar && <button className="star" onClick={(event) => markStar(event, email.id)}><i class="far fa-star"></i></button>
+        // ]}
 
       />)}
     </div>)
